@@ -14,10 +14,11 @@ public class Util {
     private static Connection conn = null;
     private static Util instance = null;
 
+
     private Util() {
         try {
             if (null == conn || conn.isClosed()) {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/mysql", "root", "Ah1fl8NqN%muiip") ;
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/users", "root", "Ah1fl8NqN%muiip") ;
             }
         } catch (SQLException  e) {
             e.printStackTrace();
