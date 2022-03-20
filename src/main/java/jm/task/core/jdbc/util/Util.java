@@ -18,7 +18,7 @@ public class Util {
     private Util() {
         try {
             if (null == conn || conn.isClosed()) {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/users", "root", "Ah1fl8NqN%muiip") ;
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/lolkek", "root", "Ah1fl8NqN%muiip") ;
             }
         } catch (SQLException  e) {
             e.printStackTrace();
