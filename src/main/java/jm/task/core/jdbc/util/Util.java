@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-    private static Connection conn = null;
-    private static Util instance = null;
+    private static Connection conn ;
+    private static Util instance ;
 
 
     private Util() {
