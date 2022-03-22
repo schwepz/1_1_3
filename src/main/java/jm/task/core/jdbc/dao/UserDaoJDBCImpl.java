@@ -19,6 +19,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (PreparedStatement statement = conn.prepareStatement("CREATE TABLE IF NOT EXISTS users " +
                 "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), last_name VARCHAR(255), age INT)")) {
             statement.executeUpdate();
+            conn.commit();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -28,6 +29,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (PreparedStatement statement = conn.prepareStatement("DROP TABLE IF EXISTS users")) {
             statement.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -40,6 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setByte(3, age);
             statement.executeUpdate();
             System.out.println("User с именем " + name + " добавлен в базу данных");
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -49,6 +52,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (PreparedStatement statement = conn.prepareStatement("DELETE FROM users WHERE id = ?")) {
             statement.setLong(1, id);
             statement.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,6 +68,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setId(resultSet.getLong("id"));
                 users.add(user);
             }
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -74,6 +79,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         try (PreparedStatement statement = conn.prepareStatement("TRUNCATE TABLE users")) {
             statement.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         }

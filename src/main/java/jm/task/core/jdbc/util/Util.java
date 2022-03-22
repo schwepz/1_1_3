@@ -20,7 +20,9 @@ public class Util {
             if (null == conn || conn.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost/lolkek", "root", "Ah1fl8NqN%muiip") ;
+
             }
+            conn.setAutoCommit(false);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -33,7 +35,7 @@ public class Util {
         return instance;
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return conn;
     }
 
