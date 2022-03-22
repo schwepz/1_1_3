@@ -18,9 +18,10 @@ public class Util {
     private Util() {
         try {
             if (null == conn || conn.isClosed()) {
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost/lolkek", "root", "Ah1fl8NqN%muiip") ;
             }
-        } catch (SQLException  e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
